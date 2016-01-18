@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="c8e65fde-65a7-4584-8685-045ea38970cd" name="CFPB" url="https://bootcamp-coders.cnm.edu/~mprinz1/CFPB">
-        <fileTransfer host="bootcamp-coders.cnm.edu" port="22" privateKey="C:\Users\rkite_000\Desktop\Bootcamp\ssh-key.openssh" rootFolder="/home/mprinz1/public_html/CFPB" accessType="SFTP" username="mprinz1" keyPair="true">
+        <fileTransfer host="bootcamp-coders.cnm.edu" port="22" privateKey="C:\Users\rkite_000\Desktop\Bootcamp\ssh-key.openssh" rootFolder="/home/mprinz1/public_html/CFPB" accessType="SFTP" passphrase="dfc2dfdadfc8dfdddfdbdfc0df9cdf93" username="mprinz1" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
