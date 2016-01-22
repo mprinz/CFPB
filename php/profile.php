@@ -101,22 +101,38 @@ class Profile {
 
 		//store the email content
 		$this->email = $newEmail;
-
-		public function setPhone($newPhone) {
-		//verify the phone data is secure
-		$newPhone = filter_var($newPhone, FILTER_VALIDATE_INT);
+	}
+	public function setPhone($newPhone) {
+			//verify the phone data is secure
+			$newPhone = filter_var($newPhone, FILTER_VALIDATE_INT);
 
 			//store the phone content
-			$this->phone = $newPhone:
+			$this->phone = $newPhone;
 		}
-		public function setZipCode ($newZipCode){
+	public function setZipCode($newZipCode) {
 			// verify the zip code is secure
 			$newZipCode = filter_var($newZipCode, FILTER_VALIDATE_INT);
 
 			//store the zip code content
-			$this->zipCode =  $newZipCode;
+			$this->zipCode = $newZipCode;
 		}
-	public function __construct($firstName, $lastName, $email, $zipCode, $phone = null)
+	public function __construct($firstName, $lastName, $email, $zipCode, $phone = null){
+		try {
+				$this->setFirstName($newFirstName);
+				$this->setLastName($newLastName);
+				$this->setEmail($newEmail);
+				$this->setPhone($newPhone);
+				$this->zipCode($newZipCode);
+		} catch(InvalidArgumentException $invalidArgument) {
+			//rethrow the exception to the caller
+			throw(new InvalidArgumentException($invalidArgument->getMessage(), 0,($invalidArgument));
+		} catch(RangeException $range) {
+			//rethrow the exception to the caller
+			throw(new RangeException($range->getMessage(), 0, $range));
+		} catch(Exception $exception) {
+			//rethrow generic exception
+			throw(new Exception($exception->getMessage(),0, $exception));
+		}
 	}
 
 }
