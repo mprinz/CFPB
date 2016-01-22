@@ -56,6 +56,13 @@ class Profile {
 			$this->profileId = $newProfileId;
 		}
 	}
+	public function setProfileId($newProfileId) {
+		//base case: if the profile id is null, this is a new profile without a mySQL assigned id (yet)
+		if($newProfileId === null) {
+			$this->profileId = null;
+			return;
+		}
+	}
 
 	/**
 	 * accessor method for profile id
