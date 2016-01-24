@@ -178,7 +178,28 @@ class Profile {
 		public function delete(PDO $pdo) {
 			//enforce the profileId is not null (i.e. don't delete a profile that hasn't been inserted)
 			if($this->profileId === null) {
-				throw()
+				throw(new PDOException("unable to delete profile that does not exist"));
 			}
 		}
+		//create query template
+		$query = "DELETE FROM profile WHERE profileID = :profileId");
+		$statement = $pdo->prepare($query);
+
+	// bind the member variables to the place holder in the template
+		$parameters = array(profileId => $this->profileId);
+		$statement->execute($parameters);
+
+/**
+ * updates the Profile in MySQL
+ *
+ *@param PDO $pdo PDO connection  object
+ *@throws PDOException when mySQL related errors occur
+**/
+		public function update (PDO $pdo) {
+		//enforce the profileId is not null (i.e. don't update a profile that hasn't been inserted)
+		if ($this->profileId === null) {
+				throw(new PDOException("unable to update a profile that hasn't been entered"));
+		}
 }
+	//create query template
+$query = "UPDATE profile SET profileId = :profileId, firstName, lastName, email, zipCode, phone = :p "
