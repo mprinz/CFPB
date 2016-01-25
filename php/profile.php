@@ -58,12 +58,13 @@ class Profile {
 		//first apply the filter to the input
 		$newProfileId = filter_var($newProfileId, FILTER_VALIDATE_INT);
 
-		//if filter_var() rejects the new id, throw an Exception
-		if($newProfileId === false) {
-			throw(new TypeError("profile id is not an integer"));
+				//if filter_var() rejects the new id, throw an Exception
+			if($newProfileId === false) {
+				throw(new TypeError("profile id is not an integer"));
 
-			$this->profileId = $newProfileId;
-		}
+				//save the object
+				$this->profileId = $newProfileId;
+			}
 	}
 
 	/**
@@ -77,11 +78,9 @@ class Profile {
 
 	/**
 	 * mutator method for first name
-	 *
 	 * @param string $newFirstName new value of first name
 	 * @throws TypeError if $newFirstName is not a string or insecure
 	 * @throw RangeException if $newFirstName is > 75 characters
-	 *
 	 **/
 	public function setFirstName($newFirstName) {
 		// verify the first name is secure
@@ -132,21 +131,21 @@ class Profile {
 
 	public function __construct($newFirstName, $newLastName, $newEmail, $newZipCode, $newPhone = null) {
 		try {
-			$this->setFirstName($newFirstName);
-			$this->setLastName($newLastName);
-			$this->setEmail($newEmail);
-			$this->setPhone($newPhone);
-			$this->setZipCode($newZipCode);
-		} catch(InvalidArgumentException $invalidArgument) {
+				$this->setFirstName($newFirstName);
+				$this->setLastName($newLastName);
+				$this->setEmail($newEmail);
+				$this->setPhone($newPhone);
+				$this->setZipCode($newZipCode);
+				} catch(InvalidArgumentException $invalidArgument) {
+				//rethrow the exception to the caller
+				throw(new InvalidArgumentException($invalidArgument->getMessage(), 0, ($invalidArgument));
+				} catch(RangeException $range) {
 			//rethrow the exception to the caller
-			throw(new InvalidArgumentException($invalidArgument->getMessage(), 0, ($invalidArgument));
-		} catch(RangeException $range) {
-			//rethrow the exception to the caller
-			throw(new RangeException($range->getMessage(), 0, $range));
-		} catch(Exception $exception) {
+				throw(new RangeException($range->getMessage(), 0, $range));
+				} catch(Exception $exception) {
 			//rethrow generic exception
-			throw(new Exception($exception->getMessage(), 0, $exception));
-		}
+				throw(new Exception($exception->getMessage(), 0, $exception));
+			}
 	}
 /** inserts this Profile into mySQL
  *
